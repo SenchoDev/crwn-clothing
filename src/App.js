@@ -15,8 +15,7 @@ import {selectCurrentUser } from './redux/user/user.selectors'
 
 import {
   auth,
-  createUserProfileDocument,
-  firestore
+  createUserProfileDocument
 } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 
