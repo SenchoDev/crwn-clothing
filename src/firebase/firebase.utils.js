@@ -1,7 +1,6 @@
 import firebase from "firebase/app"; // we need base import for firestore and auth
 import "firebase/firestore"; // database
 import "firebase/auth";
-import { selectCollections } from "../redux/shop/shop.selectors";
 
 const config = {
   apiKey: "AIzaSyBLHk47jhet3XF5jYM_kTgp9af8Z48PwTw",
@@ -70,15 +69,25 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {})
 }
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 
 firebase.initializeApp(config);
+
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const porvider = new firebase.auth.GoogleAuthProvider();
-porvider.setCustomParameters({ prompt: "select_account" });
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
-export const signInWithGoogle = () => auth.signInWithPopup(porvider);
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
