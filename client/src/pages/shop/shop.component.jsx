@@ -1,12 +1,12 @@
-import React, {useEffect} from "react";
+import React, { useEffect, lazy } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 //import CollectionsOverview from "../../components/collections-overview/collection-overview.component";
-import CollectionsOverviewContainer from "../../components/collections-overview/collection-overview.container";
+//import CollectionsOverviewContainer from "../../components/collections-overview/collection-overview.container";
 
 //import CollectionPage from "../collection/collection.component";
-import CollectionsPageContainer from "../collection/collection.container";
+//import CollectionsPageContainer from "../collection/collection.container";
 
 //import WithSpinner from "../../components/with-spinner/with-spinner.component";
 
@@ -16,20 +16,25 @@ import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 //const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 //const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-const ShopPage = ({fetchCollectionsStart, match}) =>{
+const CollectionsOverviewContainer = lazy(() =>
+  import("../../components/collections-overview/collection-overview.container")
+);
+const CollectionsPageContainer = lazy(() =>
+  import("../collection/collection.container")
+);
 
+const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
     fetchCollectionsStart();
-  }, [fetchCollectionsStart])
+  }, [fetchCollectionsStart]);
   // componentDidMount() {
   //   const { fetchCollectionsStart } = this.props;
   //   fetchCollectionsStart();
   // }
 
-  
-    //const { match/* isCollectionFetching, isCollectionsLoaded */} = this.props;
-    return (
-      <div className="shop-page">
+  //const { match/* isCollectionFetching, isCollectionsLoaded */} = this.props;
+  return (
+    <div className="shop-page">
         <Route
           exact
           path={`${match.path}`}
@@ -47,9 +52,9 @@ const ShopPage = ({fetchCollectionsStart, match}) =>{
           )}
           */
         />
-      </div>
-    );
-  }
+    </div>
+  );
+};
 
 /*
 const mapStateToProps = createStructuredSelector({

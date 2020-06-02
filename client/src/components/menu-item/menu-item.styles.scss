@@ -8,6 +8,10 @@
     border: 1px solid black;
     margin: 0 7.5px 15px;
 
+    @media screen and (max-width: 800px) {
+      height: 200px;
+    }
+
     &:hover {
         cursor: pointer;
       
@@ -23,6 +27,9 @@
 
     &.large{
         height: 380px;
+        @media screen and (max-width: 800px) {
+          height: 200px;
+        }
     }  
     &:first-child {
       margin-right: 7.5px;
@@ -31,6 +38,8 @@
     &:last-child {
       margin-left: 7.5px;
     }
+
+  
 
     .background-image{
         width: 100%;
