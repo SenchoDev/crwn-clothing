@@ -9,6 +9,8 @@ import App from "./App";
 
 import { store, persistor } from "./redux/store";
 
+import * as serviceWoker from './serviceWorker';
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -19,3 +21,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+
+serviceWoker.register();
