@@ -37,10 +37,18 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
   return userRef;
 };
+// export const addCollectionAndDocument = async (collections) => {
+//   const collectionRef = firestore.collection("collections");
+
+//   const snapshot = await collectionRef.get()
+ 
+//   const transformedCollection = snapshot.docs.forEach(doc => console.log(doc.data()));
+
+//   //console.log(snapshot)
+// }
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
-  console.log(collectionRef);
 
   const batch = firestore.batch()
   objectsToAdd.forEach(obj => {
