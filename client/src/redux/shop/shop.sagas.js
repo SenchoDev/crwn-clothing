@@ -3,7 +3,6 @@ import { takeLatest, call, put, all } from "redux-saga/effects";
 import {
   firestore,
   convertCollectionsSnapshotToMap,
-  addCollectionAndDocument
 } from "../../firebase/firebase.utils";
 
 import {
